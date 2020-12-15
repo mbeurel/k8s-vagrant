@@ -49,6 +49,7 @@ Vagrant.configure("2") do |config|
 
       knode.vm.provision "shell", path: "script/common.sh"
       knode.vm.provision "shell", path: "script/node.sh", args: [ENV["KUBE_TOKEN"], ENV["KMASTER_IP"]]
+      knode.vm.synced_folder ENV["KMASTER_NFS_PATH"], ENV["KMASTER_NFS_MOUNT"], type: "nfs"
     end
   end
 end

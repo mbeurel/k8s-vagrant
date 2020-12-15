@@ -2,7 +2,7 @@
 
 
 apt-get update
-apt-get install -y --fix-missing apt-utils ca-certificates htop vim
+apt-get install -y --fix-missing apt-utils ca-certificates htop vim net-tools
 ## install common for k8s
 
 cp /home/vagrant/.bashrc /root/.bashrc
@@ -17,6 +17,8 @@ host_exist=$(cat /etc/hosts | grep -i "$IP" | wc -l)
 if [ "$host_exist" == "0" ];then
 echo "$IP $HOSTNAME " >> /etc/hosts
 fi
+
+
 
 echo "[2]: disable swap"
 # swapoff -a to disable swapping
