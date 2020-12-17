@@ -117,6 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 
-
-
+alias k=kubectl
+complete -F __start_kubectl k
 
