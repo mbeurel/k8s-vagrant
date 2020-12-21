@@ -3,6 +3,18 @@
 K8S in to vagrant configuration.
 K8S config used : kubelet kubeadm kubectl kubernetes-cni.
 
+## Install
+
+**Install plugin to Vagrant**
+```bash
+vagrant plugin install vagrant-env
+```
+
+**Install NFS Server**
+```bash
+apt-get install nfs-server
+```
+
 ## Config
 
 **Copy environnement file**
