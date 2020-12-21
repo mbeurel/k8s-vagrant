@@ -9,6 +9,7 @@ echo "[1] - Install Docker"
 if [ ! -f "/usr/bin/docker" ];then
 curl -s -fsSL https://get.docker.com | sh;
 fi
+usermod -aG docker vagrant
 
 echo "[2] - Add kubernetes repository to source.list"
 if [ ! -f "/etc/apt/sources.list.d/kubernetes.list" ];then
