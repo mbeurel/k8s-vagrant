@@ -19,7 +19,7 @@ mkdir $HOME/.kube
 cp /etc/kubernetes/admin.conf $HOME/.kube/config
 
 echo "[4] - Apply flannel pods network"
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f /home/vagrant/kube-flannel.yml
 
 echo "[5] - Restart and enable kubelet"
 systemctl enable kubelet

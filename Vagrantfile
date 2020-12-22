@@ -57,6 +57,7 @@ Vagrant.configure("2") do |config|
     end
     kmaster.vm.provision "file", source: vagrant_root + "/config/bashrc", destination: "/home/vagrant/.bashrc"
     kmaster.vm.provision "file", source: vagrant_root + "/config/vimrc", destination: "/home/vagrant/.vimrc"
+    kmaster.vm.provision "file", source: vagrant_root + "/config/kube-flannel.yml", destination: "/home/vagrant/kube-flannel.yml"
     kmaster.vm.provision :shell, :inline => addIpsHost
     kmaster.vm.provision "shell", path: "script/common.sh"
     kmaster.vm.provision "shell", path: "script/kube.sh"
