@@ -16,13 +16,16 @@ KNODE_NB=$7
 
 KNODE_SERVER=""
 KNODE_SERVER_SSL=""
+KNODE_SERVER_REDIS=""
 for ((i=1; i<=KNODE_NB; i++)); do
   KNODE_SERVER+="  server knode$i $KNODE_IP_START$i:80 check \n"
   KNODE_SERVER_SSL+="  server knode$i $KNODE_IP_START$i:443 check \n"
+  KNODE_SERVER_REDIS+="  server knode$i $KNODE_IP_START$i:6379 check \n"
 done
 
 echo $KNODE_SERVER
 echo $KNODE_SERVER_SSL
+echo $KNODE_SERVER_REDIS
 
 HOSTNAME=$(hostname)
 IP=$(hostname -I | awk '{print $2}')
@@ -45,6 +48,7 @@ sed -i "s/__USER__/$HAPROXY_USER/g" /etc/haproxy/haproxy.cfg
 sed -i "s/__PASSWORD__/$HAPROXY_PASSWORD/g" /etc/haproxy/haproxy.cfg
 sed -i "s/__SERVER__/$KNODE_SERVER/g" /etc/haproxy/haproxy.cfg
 sed -i "s/__SERVER_SSL__/$KNODE_SERVER_SSL/g" /etc/haproxy/haproxy.cfg
+sed -i "s/__SERVER_REDIS__/$KNODE_SERVER_REDIS/g" /etc/haproxy/haproxy.cfg
 
 
 echo "[2] - Restart Keepalive and Haproxy"
